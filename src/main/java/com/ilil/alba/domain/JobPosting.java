@@ -32,7 +32,7 @@ public class JobPosting extends BaseTime {
     private String location;
 
     @Column(nullable = false)
-    private LocalDateTime workDate;
+    private LocalDate workDate;
 
     @Column(nullable = false)
     private BigDecimal dailyWage;
