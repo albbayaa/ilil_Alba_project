@@ -1,5 +1,7 @@
 package com.ilil.alba.domain;
 
+import com.ilil.alba.domain.base.BaseStatus;
+import com.ilil.alba.domain.base.BaseTime;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,11 +19,11 @@ import static jakarta.persistence.FetchType.LAZY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class JobPosting {
+public class JobPosting extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Job_posting_id")
-    private Long JobPostingId;
+    @Column(name = "job_posting_id")
+    private Long jobPostingId;
 
     @Column(nullable = false)
     private String title;
@@ -40,6 +42,10 @@ public class JobPosting {
 
     @Column(nullable = false)
     private boolean isOneDayJob;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, columnDefinition = "VARCHAR(10)")
+    private BaseStatus status;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_id", nullable = false)
