@@ -29,6 +29,9 @@ public class JobPosting extends BaseTime {
     private String title;
 
     @Column(nullable = false)
+    private String detail;
+
+    @Column(nullable = false)
     private String location;
 
     @Column(nullable = false)

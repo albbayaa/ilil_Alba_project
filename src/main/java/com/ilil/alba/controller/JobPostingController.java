@@ -2,16 +2,14 @@ package com.ilil.alba.controller;
 
 
 import com.ilil.alba.common.response.BaseResponse;
+import com.ilil.alba.dto.JobPostingRequest;
 import com.ilil.alba.dto.JobPostingSearchRequest;
 import com.ilil.alba.dto.JobPostingSearchResponse;
 import com.ilil.alba.service.JobPostingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -34,6 +32,12 @@ public class JobPostingController {
     ) {
         JobPostingSearchRequest request = JobPostingSearchRequest.of(title, location, workDate, isOneDayJob);
         return new BaseResponse<>(jobPostingService.search(request, lastId,limit));
+    }
+
+    @PostMapping("/post")
+    public BaseResponse<Void> post(@RequestBody JobPostingRequest request){
+        jobPostingService.post(request);
+        return new BaseResponse<>(null);
     }
 
 }
