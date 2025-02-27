@@ -16,7 +16,7 @@ public enum BaseExceptionResponseStatus implements ResponseStatus{
      * 멤버 관련 code : 4000 대
      */
     ALREADY_EXIST_MEMBER(4000, HttpStatus.OK.value(), "이미 존재하는 회원입니다."),
-    NOT_FOUND_MEMBER(4002, HttpStatus.OK.value(), "회원을 찾을 수 없습니다.");
+    NOT_FOUND_MEMBER(4002, HttpStatus.NOT_FOUND.value(), "회원을 찾을 수 없습니다.");
 
     private final int code;
     private final int status;
