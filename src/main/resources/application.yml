@@ -1,7 +1,6 @@
 spring:
   profiles:
     active: ${PROFILE}
-
   servlet:
     multipart:
       enabled: true
