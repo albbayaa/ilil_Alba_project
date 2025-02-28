@@ -1,6 +1,7 @@
-package com.ilil.alba.dto;
+package com.ilil.alba.dto.jobPosting;
 
 import com.ilil.alba.domain.JobPosting;
+import com.ilil.alba.domain.base.IsOneDayJob;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,12 +37,12 @@ public class JobPostingSearchResponse {
         private LocalDate workDate;
         private BigDecimal dailyWage;
         private LocalDate paymentDate;
-        private boolean isOneDayJob;
+        private IsOneDayJob isOneDayJob;
 
 
         public static SearchResults of(Long jobPostingId, String title, String location,
                                                   LocalDate workDate, BigDecimal dailyWage, LocalDate paymentDate,
-                                                  boolean isOneDayJob){
+                                                  IsOneDayJob isOneDayJob){
             return SearchResults.builder()
                     .jobPostingId(jobPostingId)
                     .title(title)
@@ -61,7 +62,7 @@ public class JobPostingSearchResponse {
                     .workDate(jobPosting.getWorkDate())
                     .dailyWage(jobPosting.getDailyWage())
                     .paymentDate(jobPosting.getPaymentDate())
-                    .isOneDayJob(jobPosting.isOneDayJob())
+                    .isOneDayJob(jobPosting.getIsOneDayJob())
                     .build();
         }
 

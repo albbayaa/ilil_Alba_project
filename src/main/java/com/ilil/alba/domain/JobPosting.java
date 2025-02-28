@@ -2,6 +2,7 @@ package com.ilil.alba.domain;
 
 import com.ilil.alba.domain.base.BaseStatus;
 import com.ilil.alba.domain.base.BaseTime;
+import com.ilil.alba.domain.base.IsOneDayJob;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +11,6 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import static jakarta.persistence.FetchType.LAZY;
 
@@ -43,8 +43,9 @@ public class JobPosting extends BaseTime {
     @Column(nullable = false)
     private LocalDate paymentDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private boolean isOneDayJob;
+    private IsOneDayJob isOneDayJob;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "VARCHAR(10)")
