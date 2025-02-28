@@ -3,6 +3,7 @@ package com.ilil.alba.controller;
 
 import com.ilil.alba.common.response.BaseResponse;
 import com.ilil.alba.domain.base.IsOneDayJob;
+import com.ilil.alba.dto.jobPosting.JobPostingDetailResponse;
 import com.ilil.alba.dto.jobPosting.JobPostingRequest;
 import com.ilil.alba.dto.jobPosting.JobPostingSearchRequest;
 import com.ilil.alba.dto.jobPosting.JobPostingSearchResponse;
@@ -39,6 +40,12 @@ public class JobPostingController {
     public BaseResponse<Void> post(@RequestBody JobPostingRequest request){
         jobPostingService.post(request);
         return new BaseResponse<>(null);
+    }
+
+    @GetMapping("/detail")
+    public BaseResponse<JobPostingDetailResponse> jobDetail(@RequestParam Long id){
+        JobPostingDetailResponse response = jobPostingService.jobPostingDetail(id);
+        return new BaseResponse<>(response);
     }
 
 }

@@ -9,6 +9,7 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
@@ -34,10 +35,12 @@ public class JobPostingDetailResponse {
 
     private IsCertification isCertification;
 
+    private LocalDateTime createdAt;
+
 
     public static JobPostingDetailResponse of(Long jobPostingId, String title, String detail, String location,
                                               LocalDate workDate, BigDecimal dailyWage,
-                                              LocalDate paymentDate, IsOneDayJob isOneDayJob, String nickname, IsCertification isCertification) {
+                                              LocalDate paymentDate, IsOneDayJob isOneDayJob, String nickname, IsCertification isCertification, LocalDateTime createdAt) {
         return JobPostingDetailResponse.builder()
                 .jobPostingId(jobPostingId)
                 .title(title)
@@ -49,6 +52,7 @@ public class JobPostingDetailResponse {
                 .isOneDayJob(isOneDayJob)
                 .nickname(nickname)
                 .isCertification(isCertification)
+                .createdAt(createdAt)
                 .build();
     }
 
@@ -62,6 +66,7 @@ public class JobPostingDetailResponse {
                 .dailyWage(jobPosting.getDailyWage())
                 .paymentDate(jobPosting.getPaymentDate())
                 .isOneDayJob(jobPosting.getIsOneDayJob())
+                .createdAt(jobPosting.getCreatedAt())
                 .nickname(jobPosting.getMember().getNickname())
                 .isCertification(jobPosting.getMember().getIsCertification())
                 .build();
