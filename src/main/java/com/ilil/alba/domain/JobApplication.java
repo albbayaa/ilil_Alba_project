@@ -32,9 +32,6 @@ public class JobApplication extends BaseTime {
     @Column(nullable = false)
     private String resumeText;
 
-    @Column(nullable = false)
-    private LocalDate applicationDate;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "VARCHAR(10)")
     private BaseStatus status;
@@ -42,4 +39,8 @@ public class JobApplication extends BaseTime {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "job_posting_id", nullable = false)
+    private JobPosting jobPosting;
 }
