@@ -5,6 +5,7 @@ import com.ilil.alba.domain.JobPosting;
 import com.ilil.alba.domain.Member;
 import com.ilil.alba.domain.base.BaseStatus;
 import com.ilil.alba.domain.base.IsOneDayJob;
+import com.ilil.alba.dto.jobPosting.JobPostingDetailResponse;
 import com.ilil.alba.dto.jobPosting.JobPostingRequest;
 import com.ilil.alba.dto.jobPosting.JobPostingSearchRequest;
 import com.ilil.alba.dto.jobPosting.JobPostingSearchResponse;
@@ -136,12 +137,12 @@ class JobPostingServiceTest {
     }
 
     @Test
-    void 상세_보기_정상_작동() {
+    void 상세_보기_레포지_정상_작동() {
         // given
-        Long jobPostingId = 3L;
+        Long jobPostingId = 1L;
 
         var searchResult1 = JobPosting.builder()
-                .jobPostingId(3L)
+                .jobPostingId(1L)
                 .title("세종대 물건 나르기")
                 .location("서울시 광진구")
                 .workDate(LocalDate.now())
@@ -152,20 +153,24 @@ class JobPostingServiceTest {
                 .member(member)
                 .build();
 
-        var searchResult2 = JobPosting.builder()
-                .jobPostingId(3L)
-                .title("서울대 물건 나르기")
-                .location("서울시 광진구")
-                .workDate(LocalDate.now())
-                .dailyWage(BigDecimal.valueOf(110000))
-                .paymentDate(LocalDate.now().plusDays(7))
-                .isOneDayJob(IsOneDayJob.TRUE)
-                .status(BaseStatus.ACTIVE)
-                .member(member)
-                .build();
+        when(jobPostingJpaRepository.jobPostingDetail(jobPostingId))
+                .thenReturn(Optional.of(searchResult1));
 
-        var searchResult3 = JobPosting.builder()
-                .jobPostingId(3L)
+        // when
+        Optional<JobPosting> result = jobPostingJpaRepository.jobPostingDetail(jobPostingId);
+
+        // then
+        assertTrue(result.isPresent());
+        assertEquals(jobPostingId, result.get().getJobPostingId());
+    }
+
+    @Test
+    void 상세_보기_서비스_계층_정상_작동() {
+        // given
+        Long jobPostingId = 1L;
+
+        var searchResult = JobPosting.builder()
+                .jobPostingId(1L)
                 .title("건대 물건 나르기")
                 .location("서울시 광진구")
                 .workDate(LocalDate.now())
@@ -177,14 +182,13 @@ class JobPostingServiceTest {
                 .build();
 
         when(jobPostingJpaRepository.jobPostingDetail(jobPostingId))
-                .thenReturn(Optional.of(searchResult3));
+                .thenReturn(Optional.of(searchResult));
 
         // when
-        Optional<JobPosting> result = jobPostingJpaRepository.jobPostingDetail(jobPostingId);
+        JobPostingDetailResponse result = jobPostingService.jobPostingDetail(jobPostingId);
 
         // then
-        assertTrue(result.isPresent());
-        assertEquals(jobPostingId, result.get().getJobPostingId());
+        assertEquals(jobPostingId, result.getJobPostingId());
     }
 
 

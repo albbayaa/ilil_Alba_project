@@ -39,6 +39,7 @@ public class JobPostingDetailResponse {
                                               LocalDate workDate, BigDecimal dailyWage,
                                               LocalDate paymentDate, IsOneDayJob isOneDayJob, String nickname, IsCertification isCertification) {
         return JobPostingDetailResponse.builder()
+                .jobPostingId(jobPostingId)
                 .title(title)
                 .detail(detail)
                 .location(location)
@@ -53,6 +54,7 @@ public class JobPostingDetailResponse {
 
     public static JobPostingDetailResponse from(JobPosting jobPosting){
         return JobPostingDetailResponse.builder()
+                .jobPostingId(jobPosting.getJobPostingId())
                 .title(jobPosting.getTitle())
                 .detail(jobPosting.getDetail())
                 .location(jobPosting.getLocation())
