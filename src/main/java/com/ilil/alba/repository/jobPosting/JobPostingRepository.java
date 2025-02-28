@@ -3,8 +3,8 @@ package com.ilil.alba.repository.jobPosting;
 
 import com.ilil.alba.domain.QJobPosting;
 import com.ilil.alba.domain.base.BaseStatus;
-import com.ilil.alba.dto.JobPostingSearchRequest;
-import com.ilil.alba.dto.JobPostingSearchResponse;
+import com.ilil.alba.dto.jobPosting.JobPostingSearchRequest;
+import com.ilil.alba.dto.jobPosting.JobPostingSearchResponse;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -40,8 +40,8 @@ public class JobPostingRepository implements JobPostingDslRepository{
             builder.and(jobPosting.workDate.eq(request.getWorkDate()));
         }
 
-        if (request.isOneDayJob()) {
-            builder.and(jobPosting.isOneDayJob.isTrue());
+        if (request.getIsOneDayJob() != null) {
+            builder.and(jobPosting.isOneDayJob.eq(request.getIsOneDayJob()));
         }
 
         var projections = Projections.fields(JobPostingSearchResponse.SearchResults.class,

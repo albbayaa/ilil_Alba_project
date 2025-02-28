@@ -4,9 +4,9 @@ import com.ilil.alba.common.exception.MemberException;
 import com.ilil.alba.domain.JobPosting;
 import com.ilil.alba.domain.Member;
 import com.ilil.alba.domain.base.BaseStatus;
-import com.ilil.alba.dto.JobPostingRequest;
-import com.ilil.alba.dto.JobPostingSearchRequest;
-import com.ilil.alba.dto.JobPostingSearchResponse;
+import com.ilil.alba.dto.jobPosting.JobPostingRequest;
+import com.ilil.alba.dto.jobPosting.JobPostingSearchRequest;
+import com.ilil.alba.dto.jobPosting.JobPostingSearchResponse;
 import com.ilil.alba.repository.jobPosting.JobPostingDslRepository;
 import com.ilil.alba.repository.jobPosting.JobPostingJpaRepository;
 import com.ilil.alba.repository.member.MemberJpaRepository;
@@ -46,7 +46,7 @@ public class JobPostingService {
                 .workDate(request.getWorkDate())
                 .dailyWage(request.getDailyWage())
                 .paymentDate(request.getPaymentDate())
-                .isOneDayJob(request.isOneDayJob())
+                .isOneDayJob(request.getIsOneDayJob())
                 .status(BaseStatus.ACTIVE)
                 .member(member)
                 .build();

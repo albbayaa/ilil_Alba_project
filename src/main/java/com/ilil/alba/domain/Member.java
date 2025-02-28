@@ -2,6 +2,7 @@ package com.ilil.alba.domain;
 
 import com.ilil.alba.domain.base.BaseStatus;
 import com.ilil.alba.domain.base.BaseTime;
+import com.ilil.alba.domain.base.IsCertification;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +35,10 @@ public class Member extends BaseTime {
 
     @Column(nullable = false)
     private String phoneNumber;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private IsCertification isCertification;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "VARCHAR(10)")
