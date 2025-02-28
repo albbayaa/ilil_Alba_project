@@ -11,7 +11,10 @@ public enum BaseExceptionResponseStatus implements ResponseStatus{
      */
     SUCCESS(1000,HttpStatus.OK.value(), "요청에 성공하였습니다."),
     FAILURE(2000, HttpStatus.BAD_REQUEST.value(), "요청에 실패하였습니다."),
-
+    /**
+     * 공고 관련 code : 3000 대
+     */
+    NOT_FOUND_POSTING(4002, HttpStatus.NOT_FOUND.value(), "공고를 찾을 수 없습니다."),
     /**
      * 멤버 관련 code : 4000 대
      */

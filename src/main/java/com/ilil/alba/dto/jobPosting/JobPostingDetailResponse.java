@@ -1,5 +1,8 @@
 package com.ilil.alba.dto.jobPosting;
 
+import com.ilil.alba.domain.JobPosting;
+import com.ilil.alba.domain.base.IsCertification;
+import com.ilil.alba.domain.base.IsOneDayJob;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,14 +28,16 @@ public class JobPostingDetailResponse {
 
     private LocalDate paymentDate;
 
-    private boolean isOneDayJob;
+    private IsOneDayJob isOneDayJob;
 
     private String nickname;
 
+    private IsCertification isCertification;
 
-    public static JobPostingDetailResponse of(String title, String detail,String location,
-                                       LocalDate workDate, BigDecimal dailyWage,
-                                       LocalDate paymentDate, boolean isOneDayJob,  String nickname) {
+
+    public static JobPostingDetailResponse of(Long jobPostingId, String title, String detail, String location,
+                                              LocalDate workDate, BigDecimal dailyWage,
+                                              LocalDate paymentDate, IsOneDayJob isOneDayJob, String nickname, IsCertification isCertification) {
         return JobPostingDetailResponse.builder()
                 .title(title)
                 .detail(detail)
@@ -40,8 +45,23 @@ public class JobPostingDetailResponse {
                 .workDate(workDate)
                 .dailyWage(dailyWage)
                 .paymentDate(paymentDate)
-                .isOneDayJob(Boolean.TRUE.equals(isOneDayJob))
+                .isOneDayJob(isOneDayJob)
                 .nickname(nickname)
+                .isCertification(isCertification)
+                .build();
+    }
+
+    public static JobPostingDetailResponse from(JobPosting jobPosting){
+        return JobPostingDetailResponse.builder()
+                .title(jobPosting.getTitle())
+                .detail(jobPosting.getDetail())
+                .location(jobPosting.getLocation())
+                .workDate(jobPosting.getWorkDate())
+                .dailyWage(jobPosting.getDailyWage())
+                .paymentDate(jobPosting.getPaymentDate())
+                .isOneDayJob(jobPosting.getIsOneDayJob())
+                .nickname(jobPosting.getMember().getNickname())
+                .isCertification(jobPosting.getMember().getIsCertification())
                 .build();
     }
 }

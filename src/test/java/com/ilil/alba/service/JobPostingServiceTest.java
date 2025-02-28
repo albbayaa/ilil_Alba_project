@@ -1,6 +1,7 @@
 package com.ilil.alba.service;
 
 import com.ilil.alba.common.exception.MemberException;
+import com.ilil.alba.domain.JobPosting;
 import com.ilil.alba.domain.Member;
 import com.ilil.alba.domain.base.BaseStatus;
 import com.ilil.alba.domain.base.IsOneDayJob;
@@ -25,8 +26,7 @@ import java.util.stream.Collectors;
 
 import static com.ilil.alba.common.response.status.BaseExceptionResponseStatus.NOT_FOUND_MEMBER;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class JobPostingServiceTest {
@@ -133,6 +133,58 @@ class JobPostingServiceTest {
         //then
         assertEquals(NOT_FOUND_MEMBER, exception.getExceptionStatus());
         verify(jobPostingJpaRepository, never()).save(any());
+    }
+
+    @Test
+    void 상세_보기_정상_작동() {
+        // given
+        Long jobPostingId = 3L;
+
+        var searchResult1 = JobPosting.builder()
+                .jobPostingId(3L)
+                .title("세종대 물건 나르기")
+                .location("서울시 광진구")
+                .workDate(LocalDate.now())
+                .dailyWage(BigDecimal.valueOf(120000))
+                .paymentDate(LocalDate.now().plusDays(0))
+                .isOneDayJob(IsOneDayJob.TRUE)
+                .status(BaseStatus.ACTIVE)
+                .member(member)
+                .build();
+
+        var searchResult2 = JobPosting.builder()
+                .jobPostingId(3L)
+                .title("서울대 물건 나르기")
+                .location("서울시 광진구")
+                .workDate(LocalDate.now())
+                .dailyWage(BigDecimal.valueOf(110000))
+                .paymentDate(LocalDate.now().plusDays(7))
+                .isOneDayJob(IsOneDayJob.TRUE)
+                .status(BaseStatus.ACTIVE)
+                .member(member)
+                .build();
+
+        var searchResult3 = JobPosting.builder()
+                .jobPostingId(3L)
+                .title("건대 물건 나르기")
+                .location("서울시 광진구")
+                .workDate(LocalDate.now())
+                .dailyWage(BigDecimal.valueOf(110000))
+                .paymentDate(LocalDate.now().plusDays(7))
+                .isOneDayJob(IsOneDayJob.TRUE)
+                .status(BaseStatus.ACTIVE)
+                .member(member)
+                .build();
+
+        when(jobPostingJpaRepository.jobPostingDetail(jobPostingId))
+                .thenReturn(Optional.of(searchResult3));
+
+        // when
+        Optional<JobPosting> result = jobPostingJpaRepository.jobPostingDetail(jobPostingId);
+
+        // then
+        assertTrue(result.isPresent());
+        assertEquals(jobPostingId, result.get().getJobPostingId());
     }
 
 
