@@ -14,7 +14,7 @@ public enum BaseExceptionResponseStatus implements ResponseStatus{
     /**
      * 공고 관련 code : 3000 대
      */
-    NOT_FOUND_POSTING(4002, HttpStatus.NOT_FOUND.value(), "공고를 찾을 수 없습니다."),
+    NOT_FOUND_POSTING(3002, HttpStatus.NOT_FOUND.value(), "공고를 찾을 수 없습니다."),
     /**
      * 멤버 관련 code : 4000 대
      */

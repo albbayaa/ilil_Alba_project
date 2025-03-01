@@ -23,9 +23,9 @@ import static com.ilil.alba.common.response.status.BaseExceptionResponseStatus.N
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class JobApplicationService {
-    MemberJpaRepository memberJpaRepository;
-    JobPostingJpaRepository jobPostingJpaRepository;
-    JobApplicationJpaRepository jobApplicationJpaRepository;
+    private final MemberJpaRepository memberJpaRepository;
+    private final JobPostingJpaRepository jobPostingJpaRepository;
+    private final JobApplicationJpaRepository jobApplicationJpaRepository;
 
 
     @Transactional
