@@ -12,6 +12,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+import static jakarta.persistence.FetchType.LAZY;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -43,4 +45,17 @@ public class Member extends BaseTime {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "VARCHAR(10)")
     private BaseStatus status;
+
+    @OneToOne(fetch = LAZY)
+    @JoinColumn(name = "email_verification_id", nullable = true)
+    private EmailVerification emailVerification;
+
+    public void updateIsCertification(IsCertification isCertification) {
+        this.isCertification = isCertification;
+    }
+
+    public void updateEmailVerification(EmailVerification emailVerification) {
+        this.emailVerification = emailVerification;
+    }
+
 }
