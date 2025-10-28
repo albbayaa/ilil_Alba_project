@@ -1,6 +1,6 @@
 package com.ilil.alba.repository.jobPosting;
 
-import com.ilil.alba.domain.JobPosting;
+import com.ilil.alba.domain.jobPosting.entity.JobPosting;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.ilil.alba.domain;
+package com.ilil.alba.domain.emailVerification.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,8 +1,8 @@
 package com.ilil.alba.service;
 
 import com.ilil.alba.common.exception.EmailVerificationException;
-import com.ilil.alba.domain.EmailVerification;
-import com.ilil.alba.domain.Member;
+import com.ilil.alba.domain.emailVerification.entity.EmailVerification;
+import com.ilil.alba.domain.member.entity.Member;
 import com.ilil.alba.domain.base.IsCertification;
 import com.ilil.alba.repository.jobPosting.EmailVerificationRepository;
 import com.ilil.alba.repository.jobPosting.MemberJpaRepository;

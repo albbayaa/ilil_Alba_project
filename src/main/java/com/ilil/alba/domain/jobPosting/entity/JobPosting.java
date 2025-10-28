@@ -1,8 +1,9 @@
-package com.ilil.alba.domain;
+package com.ilil.alba.domain.jobPosting.entity;
 
 import com.ilil.alba.domain.base.BaseStatus;
 import com.ilil.alba.domain.base.BaseTime;
 import com.ilil.alba.domain.base.IsOneDayJob;
+import com.ilil.alba.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package com.ilil.alba.dto.jobPosting;
 
-import com.ilil.alba.domain.JobPosting;
+import com.ilil.alba.domain.jobPosting.entity.JobPosting;
 import com.ilil.alba.domain.base.IsOneDayJob;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

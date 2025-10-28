@@ -1,5 +1,6 @@
-package com.ilil.alba.domain;
+package com.ilil.alba.domain.member.entity;
 
+import com.ilil.alba.domain.emailVerification.entity.EmailVerification;
 import com.ilil.alba.domain.base.BaseStatus;
 import com.ilil.alba.domain.base.BaseTime;
 import com.ilil.alba.domain.base.IsCertification;

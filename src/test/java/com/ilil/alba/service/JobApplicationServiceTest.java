@@ -1,17 +1,12 @@
 package com.ilil.alba.service;
 
 import com.ilil.alba.common.exception.JobPostingException;
-import com.ilil.alba.common.exception.MemberException;
-import com.ilil.alba.domain.JobPosting;
-import com.ilil.alba.domain.Member;
-import com.ilil.alba.domain.QJobApplication;
+import com.ilil.alba.domain.jobPosting.entity.JobPosting;
+import com.ilil.alba.domain.member.entity.Member;
 import com.ilil.alba.domain.base.BaseStatus;
 import com.ilil.alba.domain.base.IsOneDayJob;
-import com.ilil.alba.dto.jobPosting.JobPostingRequest;
-import com.ilil.alba.dto.jobPosting.JobPostingSearchRequest;
 import com.ilil.alba.dto.jopApplication.JobApplicationRequest;
 import com.ilil.alba.repository.jobApplication.JobApplicationJpaRepository;
-import com.ilil.alba.repository.jobPosting.JobPostingDslRepository;
 import com.ilil.alba.repository.jobPosting.JobPostingJpaRepository;
 import com.ilil.alba.repository.member.MemberJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +19,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import static com.ilil.alba.common.response.status.BaseExceptionResponseStatus.NOT_FOUND_MEMBER;
 import static com.ilil.alba.common.response.status.BaseExceptionResponseStatus.NOT_FOUND_POSTING;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;

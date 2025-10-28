@@ -1,6 +1,6 @@
 package com.ilil.alba.repository.jobPosting;
 
-import com.ilil.alba.domain.EmailVerification;
+import com.ilil.alba.domain.emailVerification.entity.EmailVerification;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,14 +1,14 @@
-package com.ilil.alba.domain;
+package com.ilil.alba.domain.jobApplication.entity;
 
+import com.ilil.alba.domain.jobPosting.entity.JobPosting;
 import com.ilil.alba.domain.base.BaseStatus;
 import com.ilil.alba.domain.base.BaseTime;
+import com.ilil.alba.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 
 import static jakarta.persistence.FetchType.LAZY;
 

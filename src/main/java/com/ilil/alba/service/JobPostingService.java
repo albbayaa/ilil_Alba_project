@@ -2,8 +2,8 @@ package com.ilil.alba.service;
 
 import com.ilil.alba.common.exception.JobPostingException;
 import com.ilil.alba.common.exception.MemberException;
-import com.ilil.alba.domain.JobPosting;
-import com.ilil.alba.domain.Member;
+import com.ilil.alba.domain.jobPosting.entity.JobPosting;
+import com.ilil.alba.domain.member.entity.Member;
 import com.ilil.alba.domain.base.BaseStatus;
 import com.ilil.alba.dto.jobPosting.JobPostingDetailResponse;
 import com.ilil.alba.dto.jobPosting.JobPostingRequest;
