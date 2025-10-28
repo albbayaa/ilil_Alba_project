@@ -9,3 +9,4 @@ public interface JobApplicationRepositoryPort {
     Optional<JobApplication> findById(Long id);
     void delete(JobApplication jobApplication);
 }
+
