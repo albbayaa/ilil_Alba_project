@@ -3,6 +3,7 @@ package com.ilil.alba.common.response;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.ilil.alba.common.response.status.ResponseStatus;
+import lombok.Builder;
 import lombok.Getter;
 
 import static com.ilil.alba.common.response.status.BaseExceptionResponseStatus.SUCCESS;

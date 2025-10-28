@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/munhyeonjun/Desktop/신한 수업/alba/src/main/java/com/ilil/alba/service/**)",
+      "Read(//Users/munhyeonjun/Desktop/신한 수업/alba/src/main/java/com/ilil/alba/controller/**)",
+      "Read(//Users/munhyeonjun/Desktop/신한 수업/alba/src/main/resources/**)",
+      "Read(//Users/munhyeonjun/Desktop/신한 수업/alba/src/main/java/com/ilil/alba/config/**)",
+      "Read(//Users/munhyeonjun/Desktop/신한 수업/alba/src/main/java/com/ilil/alba/domain/**)",
+      "Read(//Users/munhyeonjun/Desktop/신한 수업/alba/**)",
+      "Bash(cd:*)",
+      "Bash(tree:*)",
+      "Bash(cat:*)",
+      "Read(//Users/munhyeonjun/Desktop/**)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
