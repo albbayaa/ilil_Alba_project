@@ -62,33 +62,4 @@ public class PerformanceController {
 
         return response;
     }
-
-    /**
-     * 모든 방식을 동시에 비교
-     * GET /api/performance/compare-all?tasks=1000&duration=100
-     */
-    @GetMapping("/compare-all")
-    public Map<String, Object> compareAllMethods(
-            @RequestParam(defaultValue = "1000") int tasks,
-            @RequestParam(defaultValue = "100") long duration) throws InterruptedException {
-
-        List<VirtualThreadPerformanceTest.PerformanceResult> results = new ArrayList<>();
-
-        // 가상 스레드 테스트
-        results.add(VirtualThreadPerformanceTest.testWithVirtualThreads(tasks, duration));
-
-        // 고정 스레드 풀 테스트
-        results.add(VirtualThreadPerformanceTest.testWithFixedThreadPool(tasks, duration));
-
-        VirtualThreadPerformanceTest.ComparisonReport report =
-            new VirtualThreadPerformanceTest.ComparisonReport(results);
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("taskCount", tasks);
-        response.put("taskDurationMs", duration);
-        response.put("results", results);
-        response.put("summary", report.toString());
-
-        return response;
-    }
 }

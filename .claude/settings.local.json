@@ -11,7 +11,8 @@
       "Bash(tree:*)",
       "Bash(cat:*)",
       "Read(//Users/munhyeonjun/Desktop/**)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(java:*)"
     ],
     "deny": [],
     "ask": []

@@ -118,47 +118,6 @@ public class VirtualThreadPerformanceTest {
     }
 
     /**
-     * 성능 비교 리포트 생성
-     */
-    public static class ComparisonReport {
-        public List<PerformanceResult> results;
-        public String summary;
-
-        public ComparisonReport(List<PerformanceResult> results) {
-            this.results = results;
-            this.summary = generateSummary();
-        }
-
-        private String generateSummary() {
-            if (results.isEmpty()) return "";
-
-            PerformanceResult fastest = results.get(0);
-            for (PerformanceResult result : results) {
-                if (result.executionTimeMs < fastest.executionTimeMs) {
-                    fastest = result;
-                }
-            }
-
-            StringBuilder sb = new StringBuilder();
-            sb.append("\n📊 === 성능 비교 결과 ===\n\n");
-
-            for (PerformanceResult result : results) {
-                sb.append(result).append("\n\n");
-            }
-
-            double speedup = (double) results.get(0).executionTimeMs / fastest.executionTimeMs;
-            sb.append(String.format("⚡ 최고 성능: %s (%.2fx 빠름)\n", fastest.threadType, speedup));
-
-            return sb.toString();
-        }
-
-        @Override
-        public String toString() {
-            return summary;
-        }
-    }
-
-    /**
      * 메모리 사용량 측정
      */
     public static long getMemoryUsageMB() {
